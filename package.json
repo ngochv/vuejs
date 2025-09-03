@@ -9,11 +9,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.5.18"
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.2",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1",
+    "vuetify": "^3.9.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
-    "vite": "^7.1.2"
+    "eslint": "^9.34.0",
+    "eslint-plugin-vue": "^10.4.0",
+    "prettier": "^3.6.2",
+    "sass": "^1.92.0",
+    "sass-loader": "^16.0.5",
+    "vite": "^7.1.2",
+    "vite-plugin-vuetify": "^2.1.2"
   },
   "packageManager": "yarn@4.9.4+sha512.7b1cb0b62abba6a537b3a2ce00811a843bea02bcf53138581a6ae5b1bf563f734872bd47de49ce32a9ca9dcaff995aa789577ffb16811da7c603dcf69e73750b"
 }
