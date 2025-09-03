@@ -3,7 +3,7 @@
 ### 1. Create a new project
 
 ```bash
-npm create vite@latest my-vue-app -- --template vue
+yarn create vite my-app --template vue-ts
 ```
 
 ### 2. Install and run developer server
