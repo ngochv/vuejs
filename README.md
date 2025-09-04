@@ -1,5 +1,7 @@
 # Vue 3 + Vite
+
 A front-end project built with **Vue 3**, using:
+
 - ⚡ [Vite](https://vitejs.dev/) — super fast bundler
 - 🎨 [Vuetify 3](https://next.vuetifyjs.com/en/) — UI component framework
 - 📦 [Pinia](https://pinia.vuejs.org/) — state management
