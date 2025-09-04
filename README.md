@@ -1,4 +1,10 @@
 # Vue 3 + Vite
+A front-end project built with **Vue 3**, using:
+- ⚡ [Vite](https://vitejs.dev/) — super fast bundler
+- 🎨 [Vuetify 3](https://next.vuetifyjs.com/en/) — UI component framework
+- 📦 [Pinia](https://pinia.vuejs.org/) — state management
+- 🌐 [Axios](https://axios-http.com/) — HTTP client
+- 🛠️ TypeScript, ESLint + Prettier — clean & maintainable code
 
 ### 1. Create a new project
 
@@ -52,8 +58,8 @@ my-vue-app/
 │   ├── router/              # Route configuration
 │   │    └── index.ts        # Entry point for Vue Router
 │   │
-│   ├── services/            # Axios services (API calls to backend)
-│   │    ├── api.ts          # Axios instance
+│   ├── api/            # Axios services (API calls to backend)
+│   │    ├── axios.ts          # Axios instance
 │   │    └── postService.ts  # Service for Posts
 │   │
 │   ├── stores/              # Pinia stores (state management)
