@@ -723,6 +723,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/js-cookie@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "@types/js-cookie@npm:3.0.6"
+  checksum: 10c0/173afaf5ea9d86c22395b9d2a00b6adb0006dcfef165d6dcb0395cdc32f5a5dcf9c3c60f97194119963a15849b8f85121e1ae730b03e40bc0c29b84396ba22f9
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/eslint-plugin@npm:8.42.0, @typescript-eslint/eslint-plugin@npm:^8.42.0":
   version: 8.42.0
   resolution: "@typescript-eslint/eslint-plugin@npm:8.42.0"
@@ -1416,10 +1423,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deep-pick-omit@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "deep-pick-omit@npm:1.2.1"
+  checksum: 10c0/6010abbf022e3dd857c140847cd51be6c55e9470f421bb39b6def3984232656668460bc0f0e522f40ae413f6406e13228fda0a88970c13b251d903c864cc1cde
+  languageName: node
+  linkType: hard
+
+"defu@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "defu@npm:6.1.4"
+  checksum: 10c0/2d6cc366262dc0cb8096e429368e44052fdf43ed48e53ad84cc7c9407f890301aa5fcb80d0995abaaf842b3949f154d060be4160f7a46cb2bc2f7726c81526f5
+  languageName: node
+  linkType: hard
+
 "delayed-stream@npm:~1.0.0":
   version: 1.0.0
   resolution: "delayed-stream@npm:1.0.0"
   checksum: 10c0/d758899da03392e6712f042bec80aa293bbe9e9ff1b2634baae6a360113e708b91326594c8a486d475c69d6259afb7efacdc3537bfcda1c6c648e390ce601b19
+  languageName: node
+  linkType: hard
+
+"destr@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "destr@npm:2.0.5"
+  checksum: 10c0/efabffe7312a45ad90d79975376be958c50069f1156b94c181199763a7f971e113bd92227c26b94a169c71ca7dbc13583b7e96e5164743969fc79e1ff153e646
   languageName: node
   linkType: hard
 
@@ -2341,6 +2369,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-cookie@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "js-cookie@npm:3.0.5"
+  checksum: 10c0/04a0e560407b4489daac3a63e231d35f4e86f78bff9d792011391b49c59f721b513411cd75714c418049c8dc9750b20fcddad1ca5a2ca616c3aca4874cce5b3a
+  languageName: node
+  linkType: hard
+
 "js-yaml@npm:^4.1.0":
   version: 4.1.0
   resolution: "js-yaml@npm:4.1.0"
@@ -2620,6 +2655,7 @@ __metadata:
   dependencies:
     "@eslint/js": "npm:^9.34.0"
     "@types/axios": "npm:^0.14.4"
+    "@types/js-cookie": "npm:^3.0.6"
     "@typescript-eslint/eslint-plugin": "npm:^8.42.0"
     "@typescript-eslint/parser": "npm:^8.42.0"
     "@vitejs/plugin-vue": "npm:^6.0.1"
@@ -2630,7 +2666,9 @@ __metadata:
     eslint-config-prettier: "npm:^8.10.0"
     eslint-plugin-prettier: "npm:^4.2.1"
     eslint-plugin-vue: "npm:^9.20.0"
+    js-cookie: "npm:^3.0.5"
     pinia: "npm:^3.0.3"
+    pinia-plugin-persistedstate: "npm:^4.5.0"
     prettier: "npm:^3.6.2"
     sass: "npm:^1.92.0"
     sass-loader: "npm:^16.0.5"
@@ -2854,6 +2892,28 @@ __metadata:
   version: 4.0.3
   resolution: "picomatch@npm:4.0.3"
   checksum: 10c0/9582c951e95eebee5434f59e426cddd228a7b97a0161a375aed4be244bd3fe8e3a31b846808ea14ef2c8a2527a6eeab7b3946a67d5979e81694654f939473ae2
+  languageName: node
+  linkType: hard
+
+"pinia-plugin-persistedstate@npm:^4.5.0":
+  version: 4.5.0
+  resolution: "pinia-plugin-persistedstate@npm:4.5.0"
+  dependencies:
+    deep-pick-omit: "npm:^1.2.1"
+    defu: "npm:^6.1.4"
+    destr: "npm:^2.0.5"
+  peerDependencies:
+    "@nuxt/kit": ">=3.0.0"
+    "@pinia/nuxt": ">=0.10.0"
+    pinia: ">=3.0.0"
+  peerDependenciesMeta:
+    "@nuxt/kit":
+      optional: true
+    "@pinia/nuxt":
+      optional: true
+    pinia:
+      optional: true
+  checksum: 10c0/88fd62a085c04b92f237a8f2674bf712a6aff8ea21a512c8bf72760b4ce124fca6083453ddd2535012bd03d94edd02cd3acb5117b897f50628f95663f54c4b35
   languageName: node
   linkType: hard
 

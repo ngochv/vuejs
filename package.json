@@ -14,7 +14,9 @@
   "dependencies": {
     "axios": "^1.11.0",
     "dotenv": "^17.2.2",
+    "js-cookie": "^3.0.5",
     "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.5.0",
     "vue": "^3.5.18",
     "vue-i18n": "^11.1.12",
     "vue-router": "^4.5.1",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@types/axios": "^0.14.4",
+    "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "@vitejs/plugin-vue": "^6.0.1",
