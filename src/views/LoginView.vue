@@ -25,6 +25,7 @@ async function handleLogin() {
   try {
     await auth.login(username.value, password.value)
     router.push({ name: 'about' })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   } catch (err: any) {
     toast.error('Đăng nhập thất bại')
   } finally {

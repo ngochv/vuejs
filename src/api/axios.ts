@@ -22,7 +22,7 @@ axiosClient.interceptors.request.use(
   (error) => Promise.reject(error)
 )
 
-// Interceptor response
+/* eslint-disable @typescript-eslint/no-explicit-any */
 axiosClient.interceptors.response.use(
   (response): any => {
     return {
