@@ -7,13 +7,13 @@
 </template>
 
 <script setup lang="ts">
+import { useAuth } from '@/composables/useAuth'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
 import { useToast } from 'vue-toastification'
 
 const router = useRouter()
-const auth = useAuthStore()
+const auth = useAuth()
 const toast = useToast()
 
 const username = ref('admin')

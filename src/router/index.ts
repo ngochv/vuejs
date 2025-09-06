@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
 import Home from '@/views/HomeView.vue'
 import About from '@/views/AboutView.vue'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/authStore'
 import LoginView from '@/views/LoginView.vue'
 
 const routes: RouteRecordRaw[] = [

@@ -4,9 +4,9 @@
       <v-toolbar-title>My Vue App</v-toolbar-title>
       <v-spacer />
 
-      <template v-if="auth.isLoggedIn">
+      <template v-if="auth.authStore.isLoggedIn">
         <v-btn to="/" text>
-          {{ $t('helloName', { name: auth.user?.username }) }}
+          {{ $t('helloName', { name: auth.authStore.user?.username }) }}
         </v-btn>
         <v-btn to="/about" text>{{ $t('about') }}</v-btn>
         <v-btn text @click="auth.logout">Logout</v-btn>
@@ -34,11 +34,11 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useLangStore } from '@/stores/lang'
-import { useAuthStore } from '@/stores/auth'
+import { useAuth } from '@/composables/useAuth'
 
 const { locale } = useI18n()
 const langStore = useLangStore()
-const auth = useAuthStore()
+const auth = useAuth()
 
 function setLang(lang: string) {
   langStore.setLocale(lang)
