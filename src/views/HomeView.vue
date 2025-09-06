@@ -36,6 +36,5 @@ function goAbout() {
 .demo-box {
   border-radius: $border-radius-md;
   padding: $spacing-md;
-  color: $color-white;
 }
 </style>

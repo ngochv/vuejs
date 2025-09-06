@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, watch } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
@@ -20,9 +20,14 @@ import 'vue-toastification/dist/index.css'
 // Import global styles
 import './assets/styles/main.scss'
 
+import { useThemeStore } from './stores/themeStore'
+
 const vuetify = createVuetify({
   components,
   directives,
+  theme: {
+    defaultTheme: 'light', // default light
+  },
 })
 
 const options: PluginOptions = {
@@ -44,5 +49,16 @@ app.use(router)
 app.use(vuetify)
 app.use(i18n)
 app.use(Toast, options)
+
+const themeStore = useThemeStore()
+themeStore.loadTheme()
+
+watch(
+  () => themeStore.isDark,
+  (dark) => {
+    vuetify.theme.change(dark ? 'dark' : 'light')
+  },
+  { immediate: true }
+)
 
 app.mount('#app')
