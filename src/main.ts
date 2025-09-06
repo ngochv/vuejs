@@ -17,6 +17,9 @@ import i18n from './locales'
 import Toast, { type PluginOptions, POSITION } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
+// Import global styles
+import './assets/styles/main.scss'
+
 const vuetify = createVuetify({
   components,
   directives,

@@ -8,6 +8,11 @@
         <p>Welcome to the Home page of your Vue 3 + Vuetify app 🚀</p>
 
         <v-btn color="primary" @click="goAbout"> Go to About </v-btn>
+        <br />
+        <br />
+        <div class="demo-box bg-primary">
+          <p>Style color</p>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -25,9 +30,12 @@ function goAbout() {
 }
 </script>
 
-<style scoped>
-p {
-  margin-top: 8px;
-  color: #555;
+<style lang="scss" scoped>
+@use './../assets/styles/_variables.scss' as *;
+
+.demo-box {
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  color: $color-white;
 }
 </style>
