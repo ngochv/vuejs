@@ -35,6 +35,9 @@ import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import postApi from '@/api/postApi'
 import type { Post } from '@/types/post'
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
 
 const router = useRouter()
 const posts = ref<Post[]>([])
@@ -49,8 +52,15 @@ async function fetchPosts() {
   try {
     const data = await postApi.getAll()
     posts.value = data.slice(0, 5)
+
+    toast('Default toast')
+    toast.info('Info toast')
+    toast.success('Success toast')
+    toast.error('Error toast')
+    toast.warning('Warning toast')
   } catch (err) {
     console.error('Error fetching posts:', err)
+    toast.error('Error toast')
   } finally {
     loading.value = false
   }

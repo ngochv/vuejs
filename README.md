@@ -7,6 +7,7 @@ A front-end project built with **Vue 3**, using:
 - 📦 [Pinia](https://pinia.vuejs.org/) — state management
 - 🌐 [Axios](https://axios-http.com/) — HTTP client
 - 🛠️ TypeScript, ESLint + Prettier — clean & maintainable code
+- 🟢 Node.js **22.x** — runtime environment
 
 ### 1. Create a new project
 
