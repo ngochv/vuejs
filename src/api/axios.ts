@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { ApiResponse } from '@/types/api'
 
 // Tạo instance axios
-const axiosClient = axios.create({
+const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
@@ -11,7 +11,7 @@ const axiosClient = axios.create({
 })
 
 // Interceptor request
-axiosClient.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('access_token')
     if (token) {
@@ -23,7 +23,7 @@ axiosClient.interceptors.request.use(
 )
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-axiosClient.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response): any => {
     return {
       data: response.data,
@@ -35,5 +35,28 @@ axiosClient.interceptors.response.use(
     return Promise.reject(error.response?.data || error.message)
   }
 )
+
+// Wrapper methods
+const axiosClient = {
+  get<T = any>(url: string, params?: object): Promise<ApiResponse<T>> {
+    return axiosInstance.get(url, { params })
+  },
+
+  post<T = any>(url: string, data?: object): Promise<ApiResponse<T>> {
+    return axiosInstance.post(url, data)
+  },
+
+  put<T = any>(url: string, data?: object): Promise<ApiResponse<T>> {
+    return axiosInstance.put(url, data)
+  },
+
+  patch<T = any>(url: string, data?: object): Promise<ApiResponse<T>> {
+    return axiosInstance.patch(url, data)
+  },
+
+  delete<T = any>(url: string, params?: object): Promise<ApiResponse<T>> {
+    return axiosInstance.delete(url, { params })
+  },
+}
 
 export default axiosClient

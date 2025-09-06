@@ -25,6 +25,11 @@
         <v-btn @click="setLang('jp')">日本語</v-btn>
       </v-container>
 
+      <v-container>
+        <v-btn @click="toggleTheme">
+          {{ theme.isDark ? 'Light Mode' : 'Dark Mode' }}
+        </v-btn>
+      </v-container>
       <!-- Route content -->
       <router-view />
     </v-main>
@@ -35,13 +40,19 @@
 import { useI18n } from 'vue-i18n'
 import { useLangStore } from '@/stores/lang'
 import { useAuth } from '@/composables/useAuth'
+import { useThemeStore } from '@/stores/themeStore'
 
 const { locale } = useI18n()
 const langStore = useLangStore()
 const auth = useAuth()
+const theme = useThemeStore()
 
 function setLang(lang: string) {
   langStore.setLocale(lang)
   locale.value = lang
+}
+
+function toggleTheme() {
+  theme.toggleDark()
 }
 </script>
