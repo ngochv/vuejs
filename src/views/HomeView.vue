@@ -3,6 +3,8 @@
     <v-row>
       <v-col>
         <h1 class="text-h4 font-weight-bold">🏠 Home Page</h1>
+        <br />
+        <h5>{{ t('helloName', { name: 'username' }) }}</h5>
         <p>Welcome to the Home page of your Vue 3 + Vuetify app 🚀</p>
 
         <v-btn color="primary" @click="goAbout"> Go to About </v-btn>
@@ -13,7 +15,9 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const router = useRouter()
 
 function goAbout() {
