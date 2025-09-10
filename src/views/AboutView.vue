@@ -5,14 +5,17 @@
         <h1 class="text-h4 font-weight-bold">ℹ️ About Page</h1>
         <p>This is the About page. You can add project info or team details here.</p>
 
-        <v-btn color="secondary" @click="goHome"> Back to Home </v-btn>
+        <v-btn color="secondary" @click="goHome">Back to Home</v-btn>
 
         <h2 class="text-h5 mt-6">Posts:</h2>
 
         <!-- Loading indicator -->
-        <div v-if="loading" class="d-flex justify-center my-4">
-          <v-progress-circular indeterminate color="primary" />
-        </div>
+        <v-progress-circular
+          v-if="loading"
+          indeterminate
+          color="primary"
+          class="my-4 d-flex justify-center"
+        />
 
         <!-- Posts list -->
         <v-list v-else>
@@ -22,7 +25,7 @@
         </v-list>
 
         <!-- Button with spinner -->
-        <v-btn color="primary" class="mt-4" :loading="loading" @click="fetchPosts">
+        <v-btn color="primary" class="mt-4" :loading="loading" @click="fetchPostsWithToast">
           Load Posts
         </v-btn>
       </v-col>
@@ -36,26 +39,25 @@ import { useToast } from 'vue-toastification'
 import postApi from '@/api/postApi'
 import type { Post } from '@/types/post'
 import { useApi } from '@/composables/useApi'
-import { onMounted, watch } from 'vue'
+import { onMounted } from 'vue'
 
 const router = useRouter()
 const toast = useToast()
 
-function goHome() {
-  router.push({ name: 'home' })
+const goHome = () => router.push({ name: 'home' })
+
+const { data: dataPost, loading, execute } = useApi<Post[]>(postApi.getAll)
+
+const fetchPostsWithToast = async () => {
+  try {
+    await execute()
+    toast.success('Posts loaded!')
+  } catch (err) {
+    toast.error((err as string) || 'Failed to load posts')
+  }
 }
 
-const { data: dataPost, loading, error, execute: fetchPosts } = useApi<Post[]>(postApi.getAll)
-
-watch(error, (err) => {
-  if (err) toast.error(err)
-})
-
-onMounted(() => {
-  fetchPosts()
-    .then(() => toast.success('Posts loaded!'))
-    .catch(() => toast.error('Failed to load posts'))
-})
+onMounted(fetchPostsWithToast)
 </script>
 
 <style scoped>
