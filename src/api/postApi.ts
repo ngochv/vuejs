@@ -1,11 +1,8 @@
-import axiosClient from './axios'
+import { api } from '@/lib/api'
 import type { Post } from '@/types/post'
 
 const postApi = {
-  getAll: async (): Promise<Post[]> => {
-    const res = await axiosClient.get('/posts')
-    return res.data
-  },
+  getAll: () => api.get<Post[]>('/posts?_limit=10'),
 }
 
 export default postApi

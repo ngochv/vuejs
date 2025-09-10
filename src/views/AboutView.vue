@@ -16,7 +16,7 @@
 
         <!-- Posts list -->
         <v-list v-else>
-          <v-list-item v-for="post in posts" :key="post.id">
+          <v-list-item v-for="post in dataPost" :key="post.id">
             <v-list-item-title>{{ post.title }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -32,39 +32,30 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
 import postApi from '@/api/postApi'
 import type { Post } from '@/types/post'
-import { useToast } from 'vue-toastification'
-
-const toast = useToast()
+import { useApi } from '@/composables/useApi'
+import { onMounted, watch } from 'vue'
 
 const router = useRouter()
-const posts = ref<Post[]>([])
-const loading = ref(false)
+const toast = useToast()
 
 function goHome() {
   router.push({ name: 'home' })
 }
 
-async function fetchPosts() {
-  loading.value = true
-  try {
-    const data = await postApi.getAll()
-    posts.value = data.slice(0, 5)
+const { data: dataPost, loading, error, execute: fetchPosts } = useApi<Post[]>(postApi.getAll)
 
-    toast('Default toast')
-    toast.info('Info toast')
-    toast.success('Success toast')
-    toast.error('Error toast')
-    toast.warning('Warning toast')
-  } catch (err) {
-    console.error('Error fetching posts:', err)
-    toast.error('Error toast')
-  } finally {
-    loading.value = false
-  }
-}
+watch(error, (err) => {
+  if (err) toast.error(err)
+})
+
+onMounted(() => {
+  fetchPosts()
+    .then(() => toast.success('Posts loaded!'))
+    .catch(() => toast.error('Failed to load posts'))
+})
 </script>
 
 <style scoped>

@@ -9,7 +9,7 @@
           {{ $t('helloName', { name: auth.authStore.user?.username }) }}
         </v-btn>
         <v-btn to="/about" text>{{ $t('about') }}</v-btn>
-        <v-btn text @click="auth.logout">Logout</v-btn>
+        <v-btn text @click="() => auth.logout('home')">Logout</v-btn>
       </template>
 
       <template v-else>

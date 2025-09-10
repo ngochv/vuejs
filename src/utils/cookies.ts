@@ -5,7 +5,7 @@ export function saveToken(token: string) {
 }
 
 export function getToken() {
-  return Cookies.get('access_token')
+  return Cookies.get('access_token') || null
 }
 
 export function clearToken() {
