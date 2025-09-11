@@ -51,7 +51,7 @@ const toast = useToast()
 
 const goHome = () => router.push({ name: 'home' })
 
-const { data: dataPost, loading, execute } = useApi<Post[]>(postApi.getAll)
+const { data: dataPost, loading, execute } = useApi<Post[]>(() => postApi.getAll(5))
 
 const fetchPostsWithToast = async () => {
   try {
