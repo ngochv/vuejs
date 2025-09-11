@@ -24,53 +24,20 @@ export const api = {
     return axiosInstance.delete(url, { params })
   },
 
-  // ====== Single file upload via backend ======
-  upload<T = any>(
-    url: string,
-    file: File,
-    extraData?: Record<string, any>
-  ): Promise<ApiResponse<T>> {
-    const formData = new FormData()
-    formData.append('file', file)
-
-    if (extraData) {
-      Object.entries(extraData).forEach(([key, value]) => {
-        formData.append(key, value as any)
-      })
-    }
-
-    return axiosInstance.post(url, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    })
+  uploadFile<T = any>(url: string, formData: FormData, config?: object): Promise<ApiResponse<T>> {
+    return axiosInstance.post(url, formData, config)
   },
 
-  // ====== Multiple files upload via backend ======
-  uploadMultiple<T = any>(
+  uploadMultipleFiles<T = any>(
     url: string,
-    files: File[],
-    extraData?: Record<string, any>
+    formData: FormData,
+    config?: object
   ): Promise<ApiResponse<T>> {
-    const formData = new FormData()
-    files.forEach((file, i) => {
-      formData.append(`files[${i}]`, file)
-    })
-
-    if (extraData) {
-      Object.entries(extraData).forEach(([key, value]) => {
-        formData.append(key, value as any)
-      })
-    }
-
-    return axiosInstance.post(url, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    })
+    return axiosInstance.post(url, formData, config)
   },
 
-  // ====== Direct upload to S3 using a pre-signed URL ======
-  async uploadToS3(presignedUrl: string, file: File): Promise<void> {
-    await axiosInstance.put(presignedUrl, file, {
-      headers: { 'Content-Type': file.type },
-    })
+  uploadToS3(presignedUrl: string, file: File, config?: object): Promise<void> {
+    return axiosInstance.put(presignedUrl, file, config)
   },
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */

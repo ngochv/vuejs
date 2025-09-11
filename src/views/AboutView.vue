@@ -41,6 +41,11 @@ import type { Post } from '@/types/post'
 import { useApi } from '@/composables/useApi'
 import { onMounted } from 'vue'
 
+// import { useApiUpload } from '@/composables/useApiUpload'
+// import { folderImage } from '@/constants/folders'
+
+// const { uploads, getUpload, uploadFile, uploadMultipleFiles } = useApiUpload()
+
 const router = useRouter()
 const toast = useToast()
 
@@ -58,6 +63,13 @@ const fetchPostsWithToast = async () => {
 }
 
 onMounted(fetchPostsWithToast)
+
+// await uploadFile('file1', file, folderImage.POSTS)
+
+// await uploadMultipleFiles('gallery', [file1, file2], folderImage.AVATARS)
+
+// const file1Status = getUpload('file1')
+// console.log(file1Status.progress, file1Status.isUploading)
 </script>
 
 <style scoped>
