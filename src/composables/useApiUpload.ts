@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 import { api } from '@/lib/api'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -23,15 +23,21 @@ export function useApiUpload() {
   async function uploadFile(
     key: string,
     file: File,
-    folder: string,
+    endPoint?: string,
     extraData?: Record<string, any>
   ) {
     initUpload(key)
     const status = uploads.get(key)!
     const formData = new FormData()
-    formData.append('file', file)
-    if (extraData) Object.entries(extraData).forEach(([k, v]) => formData.append(k, v as any))
-    const url = `${import.meta.env.VITE_API_UPLOAD_URL}/${folder}`
+
+    formData.append('file', file, file.name)
+
+    if (extraData) {
+      Object.entries(extraData).forEach(([k, v]) => formData.append(k, v as any))
+    }
+
+    let url = import.meta.env.VITE_API_UPLOAD_DOMAIN
+    if (endPoint) url = url.replace(/\/$/, '') + '/' + endPoint.replace(/^\//, '')
 
     status.isUploading = true
     status.progress = 0
@@ -56,15 +62,21 @@ export function useApiUpload() {
   async function uploadMultipleFiles(
     key: string,
     files: File[],
-    folder: string,
+    endPoint?: string,
     extraData?: Record<string, any>
   ) {
     initUpload(key)
     const status = uploads.get(key)!
     const formData = new FormData()
-    files.forEach((file, i) => formData.append(`files[${i}]`, file))
-    if (extraData) Object.entries(extraData).forEach(([k, v]) => formData.append(k, v as any))
-    const url = `${import.meta.env.VITE_API_UPLOAD_URL}/${folder}`
+
+    files.forEach((file, i) => formData.append(`files[${i}]`, file, file.name))
+
+    if (extraData) {
+      Object.entries(extraData).forEach(([k, v]) => formData.append(k, v as any))
+    }
+
+    let url = import.meta.env.VITE_API_UPLOAD_DOMAIN
+    if (endPoint) url = url.replace(/\/$/, '') + '/' + endPoint.replace(/^\//, '')
 
     status.isUploading = true
     status.progress = 0

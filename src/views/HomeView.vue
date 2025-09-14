@@ -7,7 +7,7 @@
         <h5>{{ t('helloName', { name: 'username' }) }}</h5>
         <p>Welcome to the Home page of your Vue 3 + Vuetify app 🚀</p>
 
-        <v-btn color="primary" @click="goAbout"> Go to About </v-btn>
+        <!-- <v-btn color="primary" @click="goAbout"> Go to About </v-btn> -->
         <br />
         <br />
         <div class="demo-box bg-primary">

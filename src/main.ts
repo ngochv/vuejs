@@ -7,8 +7,11 @@ import router from './router'
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
+import { VFileUpload } from 'vuetify/labs/VFileUpload'
 import * as directives from 'vuetify/directives'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
+
+import '@mdi/font/css/materialdesignicons.css'
 
 // i18n
 import i18n from './locales'
@@ -21,8 +24,17 @@ import 'vue-toastification/dist/index.css'
 import './assets/styles/main.scss'
 
 const vuetify = createVuetify({
-  components,
+  components: {
+    VFileUpload,
+  },
   directives,
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
+    },
+  },
 })
 
 const options: PluginOptions = {

@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
 import Home from '@/views/HomeView.vue'
-import About from '@/views/AboutView.vue'
 import { useAuthStore } from '@/stores/authStore'
 import LoginView from '@/views/LoginView.vue'
+import UploadView from '@/views/UploadView.vue'
+import GetDataView from '@/views/GetDataView.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -12,10 +13,16 @@ const routes: RouteRecordRaw[] = [
     component: Home,
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/get-data',
+    name: 'getData',
     meta: { requiresAuth: true },
-    component: About,
+    component: GetDataView,
+  },
+  {
+    path: '/upload',
+    name: 'upload',
+    meta: { requiresAuth: true },
+    component: UploadView,
   },
   {
     path: '/login',

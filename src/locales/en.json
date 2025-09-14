@@ -1,5 +1,6 @@
 {
   "hello": "Hello",
   "about": "About Page",
-  "helloName": "Hello: {name}"
+  "helloName": "Hello: {name}",
+  "getData": "Get Data"
 }

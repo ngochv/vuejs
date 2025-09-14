@@ -1,5 +1,6 @@
 {
   "hello": "こんにちは",
   "about": "概要ページ",
-  "helloName": "こんにちは: {name}"
+  "helloName": "こんにちは: {name}",
+  "getData": "Get Data"
 }

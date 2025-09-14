@@ -1,5 +1,6 @@
 {
   "hello": "Xin chào",
   "about": "Trang Giới thiệu",
-  "helloName": "Xin chào: {name}"
+  "helloName": "Xin chào: {name}",
+  "getData": "Get Data"
 }
